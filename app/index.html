@@ -16,9 +16,12 @@
 
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<body>
+<body ng-controller="ToDoController as toDoCtrl">
   <div class="page-header">
-    <h1>Flavia's To Do List</h1>
+    <h1>
+      {{toDoCtrl.todo.user}}'s To Do List
+      <span class="label label-default">{{toDoCtrl.todo.items.length}}</span>
+    </h1>
     <div class="panel">
       <div class="input-group">
         <input class="form-control" />
@@ -35,10 +38,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Buy Flowers</td></tr>
-          <tr><td>Get Shoes</td></tr>
-          <tr><td>Collect Tickets</td></tr>
-          <tr><td>Call Joe</td></tr>
+         <tr ng-repeat="item in toDoCtrl.todo.items">
+           <td>{{item.action}}</td>
+           <td>{{item.done}}</td>
+         </tr>
         </tbody>
       </table>
     </div>
@@ -47,13 +50,6 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-</body>
+  </body>
 </html>
